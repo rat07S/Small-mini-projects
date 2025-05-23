@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmFresh - Direct Farm Sales</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #edf6f9;
+            color: #003845;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #006d77, #83c5be);
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        .container {
+            margin-top: 80px;
+            padding: 1.5rem;
+            max-width: 100%;
+        }
+
+        .search-bar {
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.7rem;
+            border: 2px solid #83c5be;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            background: #ff6f61;
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .product-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+            border: �렵px solid #83c5be;
+        }
+
+        .product-info {
+            margin: 0.8rem 0;
+        }
+
+        .btn {
+            background: #ff6f61;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #e65a50;
+            transform: scale(1.05);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 56, 69, 0.6);
+            z-index: 2000;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 10% auto;
+            padding: 2rem;
+            width: 90%;
+            max-width: 450px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: slideIn 0.4s ease;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-100px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .form-group {
+            margin: 1.2rem 0;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.7rem;
+            border: 2px solid #83c5be;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #ff6f61;
+            outline: none;
+        }
+
+        footer {
+            background: linear-gradient(135deg, #003845, #006d77);
+            color: white;
+            padding: 2rem 1.5rem;
+            margin-top: 2rem;
+            position: relative;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #ff6f61;
+            display: inline-block;
+            padding-bottom: 0.3rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin: 0.5rem 0;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-section ul li:hover {
+            transform: translateX(10px);
+        }
+
+        .footer-section a {
+            color: #edf6f9;
+            text-decoration: none;
+        }
+
+        .footer-section a:hover {
+            color: #ff6f61;
+        }
+
+        .subscribe-form {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .subscribe-form input {
+            padding: 0.6rem;
+            border: none;
+            border-radius: 5px;
+            flex: 1;
+        }
+
+        .subscribe-form button {
+            background: #ff6f61;
+            border: none;
+            padding: 0.6rem 1rem;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .subscribe-form button:hover {
+            background: #e65a50;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (min-width: 768px) {
+            .products-grid, .orders-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .products-grid, .orders-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1>FarmFresh</h1>
+            <div>
+                <button class="nav-btn" onclick="showPage('home')">Home</button>
+                <button class="nav-btn" onclick="showPage('orders')">Orders</button>
+                <button class="nav-btn" onclick="showModal('addProduct')">Add Product</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container page active" id="home">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search products...">
+            <button onclick="searchProducts()">Search</button>
+        </div>
+        <div class="products-grid" id="productList"></div>
+    </div>
+
+    <div class="container page" id="orders">
+        <div class="orders-grid" id="orderList"></div>
+    </div>
+
+    <div class="modal" id="addProductModal">
+        <div class="modal-content">
+            <h2>Add New Product</h2>
+            <div class="form-group">
+                <input type="text" id="productName" placeholder="Product Name">
+            </div>
+            <div class="form-group">
+                <input type="number" id="productPrice" placeholder="Price ($)" step="0.01">
+            </div>
+            <div class="form-group">
+                <input type="text" id="productImage" placeholder="Image URL">
+            </div>
+            <div class="form-group">
+                <select id="deliveryOption">
+                    <option value="pickup">Pickup</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+            </div>
+            <button class="btn" onclick="addProduct()">Add Product</button>
+            <button class="btn" onclick="closeModal('addProduct')" style="background: #003845; margin-left: 1rem;">Cancel</button>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>About FarmFresh</h3>
+                <p>Connecting farmers directly to customers with fresh, local produce.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#" onclick="showPage('home')">Home</a></li>
+                    <li><a href="#" onclick="showPage('orders')">Orders</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Stay Updated</h3>
+                <p>Subscribe for fresh deals!</p>
+                <form class="subscribe-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="Your Email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2025 FarmFresh | Designed with ❤️ for Farmers
+        </div>
+    </footer>
+
+    <script>
+        let products = [
+            { id: 1, name: "Fresh Tomatoes", price: 2.99, image: "download.jpeg", delivery: "pickup" },
+            { id: 2, name: "Organic Eggs", price: 4.99, image: "1.jpeg", delivery: "delivery" },
+            { id: 3, name: "Sweet Corn", price: 1.50, image: "2.jpeg", delivery: "pickup" },
+            { id: 4, name: "Grass-Fed Beef", price: 12.99, image: "3.jpeg", delivery: "delivery" },
+            { id: 5, name: "Honey Jar", price: 6.75, image: "4.jpeg", delivery: "pickup" },
+            { id: 6, name: "Blueberries", price: 3.99, image: "5.jpeg", delivery: "delivery" },
+            { id: 7, name: "Pumpkin Squash", price: 4.50, image: "6.jpeg", delivery: "pickup" },
+            { id: 8, name: "Fresh Milk", price: 3.25, image: "7.jpeg", delivery: "delivery" },
+            { id: 9, name: "Carrots", price: 2.25, image: "8.jpeg", delivery: "pickup" },
+            { id: 10, name: "Apple Basket", price: 5.99, image: "9.jpeg", delivery: "delivery" },
+            { id: 11, name: "Spinach Bunch", price: 1.99, image: "10.jpeg", delivery: "pickup" },
+            { id: 12, name: "Potato Sack", price: 3.75, image: "11.jpeg", delivery: "delivery" }
+        ];
+        let orders = [];
+
+        function loadData() {
+            const savedProducts = localStorage.getItem('products');
+            const savedOrders = localStorage.getItem('orders');
+            if (savedProducts) products = JSON.parse(savedProducts);
+            if (savedOrders) orders = JSON.parse(savedOrders);
+        }
+
+        function saveData() {
+            localStorage.setItem('products', JSON.stringify(products));
+            localStorage.setItem('orders', JSON.stringify(orders));
+        }
+
+        function displayProducts(filter = '') {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            const filteredProducts = products.filter(p => p.name.toLowerCase().includes(filter.toLowerCase()));
+            filteredProducts.forEach((product, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/150?text=${encodeURIComponent(product.name)}'">
+                    <div class="product-info">
+                        <h3>${product.name}</h3>
+                        <p>$${product.price.toFixed(2)}</p>
+                        <p>Delivery: ${product.delivery}</p>
+                        <button class="btn" onclick="addToOrder(${product.id})">Order Now</button>
+                    </div>
+                `;
+                productList.appendChild(card);
+            });
+        }
+
+        function addProduct() {
+            const name = document.getElementById('productName').value;
+            const price = parseFloat(document.getElementById('productPrice').value);
+            const image = document.getElementById('productImage').value || 'https://via.placeholder.com/150';
+            const delivery = document.getElementById('deliveryOption').value;
+
+            if (name && price) {
+                products.push({
+                    id: Date.now(),
+                    name,
+                    price,
+                    image,
+                    delivery
+                });
+                closeModal('addProduct');
+                saveData();
+                displayProducts();
+                clearForm();
+            } else {
+                alert('Please fill all required fields');
+            }
+        }
+
+        function clearForm() {
+            document.getElementById('productName').value = '';
+            document.getElementById('productPrice').value = '';
+            document.getElementById('productImage').value = '';
+        }
+
+        
+        function addToOrder(productId) {
+            const product = products.find(p => p.id === productId);
+            orders.push({
+                ...product,
+                orderId: Date.now(),
+                status: 'Pending',
+                date: new Date().toLocaleDateString()
+            });
+            saveData();
+            alert(`${product.name} added to orders!`);
+        }
+
+        
+        function showOrders() {
+            const orderList = document.getElementById('orderList');
+            orderList.innerHTML = '';
+            orders.forEach((order, index) => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.style.animationDelay = `${index * 0.1}s`;
+                card.innerHTML = `
+                    <img src="${order.image}" alt="${order.name}" class="product-img" loading="lazy" 
+                         onerror="this.src='https://via.placeholder.com/150?text=${encodeURIComponent(order.name)}'">
+                    <div class="product-info">
+                        <h3>${order.name}</h3>
+                        <p>Price: $${order.price.toFixed(2)}</p>
+                        <p>Status: ${order.status}</p>
+                        <p>Date: ${order.date}</p>
+                        <button class="btn" onclick="updateOrderStatus(${order.orderId}, 'Delivered')">Mark Delivered</button>
+                    </div>
+                `;
+                orderList.appendChild(card);
+            });
+            if (orders.length === 0) orderList.innerHTML = '<p>No orders yet</p>';
+        }
+
+        
+        function updateOrderStatus(orderId, status) {
+            const order = orders.find(o => o.orderId === orderId);
+            if (order) {
+                order.status = status;
+                saveData();
+                showOrders();
+            }
+        }
+
+        
+        function showModal(modalId) {
+            document.getElementById(`${modalId}Modal`).style.display = 'block';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(`${modalId}Modal`).style.display = 'none';
+        }
+
+       
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            if (pageId === 'home') displayProducts();
+            if (pageId === 'orders') showOrders();
+        }
+
+        function searchProducts() {
+            const searchTerm = document.getElementById('searchInput').value;
+            displayProducts(searchTerm);
+        }
+
+        loadData();
+        displayProducts();
+    </script>
+</body>
+</html>

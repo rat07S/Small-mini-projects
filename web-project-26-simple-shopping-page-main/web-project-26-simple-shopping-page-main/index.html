@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfect Header & Footer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-menu li a {
+            text-decoration: none;
+            color: #666;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu li a:hover {
+            color: #000;
+        }
+        
+
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #e7e7e7;
+            border-radius: 5px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: box-shadow 0.3s ease;
+            cursor: pointer; 
+        }
+
+        .product-image {
+            width: 100%;
+            height: 150px;
+            border-radius: 5px;
+            object-fit: cover; 
+        }
+
+        .product-description {
+            display: none; 
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            padding: 0.5rem;
+            background-color: #f8f8f8;
+            border-radius: 3px;
+            margin-top: 0.5rem;
+        }
+
+        .product-card.active .product-description {
+            display: block;
+        }
+        .cart {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-icon {
+            font-size: 1.2rem;
+            color: #666;
+            padding: 0.5rem;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: #ff4444;
+            color: white;
+            border-radius: 50%;
+            width: 1.2rem;
+            height: 1.2rem;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            flex: 1 0 auto;
+            padding-top: 80px;
+            padding-bottom: 2rem;
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background-color: #ffffff;
+            border: 1px solid #e7e7e7;
+            border-radius: 5px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .product-price {
+            font-size: 1rem;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .add-to-cart {
+            background-color: #010101;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #3d3f3d;
+        }
+
+
+        footer {
+            background-color: #f8f8f8;
+            border-top: 1px solid #e7e7e7;
+            flex-shrink: 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #000;
+        }
+
+        .footer-copyright {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 1rem;
+            }
+            
+            nav {
+                gap: 1rem;
+            }
+
+            .nav-menu {
+                gap: 1rem;
+            }
+
+            .products-container {
+                padding: 0 1rem;
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 1rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+                padding: 1.5rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }             
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">Mashit</div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html">About</a></li>
+                    <li><a href="index.html">Services</a></li>
+                    <li><a href="index.html">Contact</a></li>
+                </ul>
+                <div class="cart">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count">3</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="products-container">
+            <div class="product-card">
+                <img class="product-image" src="wireless headphone.jpg" alt="Wireless Headphones">
+                <div class="product-name">Wireless Headphones</div>
+                <div class="product-price">$59.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    High-quality wireless headphones with noise cancellation and 20-hour battery life.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="smart watch.jpg" alt="Smart Watch">
+                <div class="product-name">Smart Watch</div>
+                <div class="product-price">$89.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Fitness tracking smart watch with heart rate monitor and waterproof design.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="11.jpg" alt="Bluetooth Speaker">
+                <div class="product-name">Bluetooth Speaker</div>
+                <div class="product-price">$39.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Portable Bluetooth speaker with rich sound and 12-hour playtime.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="usb charger.jpg" alt="USB-C Charger">
+                <div class="product-name">USB-C Charger</div>
+                <div class="product-price">$19.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Fast-charging USB-C adapter compatible with multiple devices.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="laptop stand.jpg" alt="Laptop Stand">
+                <div class="product-name">Laptop Stand</div>
+                <div class="product-price">$29.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Adjustable aluminum laptop stand for improved ergonomics.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="wireless mouse.jpg" alt="Wireless Mouse">
+                <div class="product-name">Wireless Mouse</div>
+                <div class="product-price">$24.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Ergonomic wireless mouse with silent clicks and long battery life.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="iphone.jpg" alt="iPhone">
+                <div class="product-name">iPhone</div>
+                <div class="product-price">$24.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Latest iPhone model with advanced camera and powerful processor.
+                </div>
+            </div>
+            <div class="product-card">
+                <img class="product-image" src="digital camera.jpg" alt="Digital Camera">
+                <div class="product-name">Digital Camera</div>
+                <div class="product-price">$24.99</div>
+                <button class="add-to-cart">Add to Cart</button>
+                <div class="product-description">
+                    Compact digital camera with 4K video and 20MP photos.
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-links">
+                <a href="index.html">Privacy Policy</a>
+                <a href="index.html">Terms of Service</a>
+                <a href="index.html">Contact Us</a>
+            </div>
+            <div class="footer-copyright">
+                © 2025 Mashit. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                if (e.target.classList.contains('add-to-cart')) return;
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

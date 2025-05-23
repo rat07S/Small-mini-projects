@@ -1,0 +1,125 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: 'Great Vibes', cursive;
+}
+
+.aurora {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.aurora-layer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to top left, #4f66d9, #97df9b);
+    animation: move 25s linear infinite;    pointer-events: none;
+}
+@keyframes move {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+.aurora-layer:nth-child(1) {
+    animation-duration: 25s;
+    opacity: 0.6;
+}
+
+.aurora-layer:nth-child(2) {
+    animation-duration: 30s;
+    opacity: 0.4;
+}
+
+.aurora-layer:nth-child(3) {
+    animation-duration: 35s;
+    opacity: 0.2;
+}
+
+@keyframes move {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(50%, 50%) rotate(360deg); }
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    z-index: 1;
+    
+}
+
+header .logo {
+    font-size: 1.8em;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+
+nav ul li {
+    margin-left: 28px;
+    margin-right: 28px; 
+}
+
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.2em;
+    padding: 10px 15px;
+}
+
+nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.content {
+    position: relative;
+    text-align: center;
+    padding: 100px 20px;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    width: 80%; 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.5em;
+}
+
+p {
+    font-size: 1.5em;
+}
+
+.section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+

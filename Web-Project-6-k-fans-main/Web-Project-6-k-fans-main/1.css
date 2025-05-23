@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    font-family: cursive, sans-serif;
+    background-image: url(img/b.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.266); 
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(28, 27, 27, 0.281); 
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px; 
+}
+
+.logo {
+    font-size: 24px;
+    color: #333; 
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-right: 20px;
+}
+
+nav ul li:last-child {
+    margin-right: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #fffefe;
+}
+nav ul li:nth-child(1) a {
+    background-color: #060606;
+}
+
+nav ul li:nth-child(2) a {
+    background-color: #030303; 
+}
+
+nav ul li:nth-child(3) a {
+    background-color: #060606; 
+}
+nav ul li a:hover{
+    background-color: #413f3f;
+}
+
+
+.video-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; 
+    padding: 6%; 
+    width: 100%; 
+    box-sizing: border-box; 
+}
+
+.video-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0; 
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.5s, transform 0.5s; 
+}
+
+.video-container:nth-child(even) {
+    flex-direction: row-reverse; 
+}
+
+.description {
+    padding: 10px;
+    width: 45%; 
+    border-radius: 8px; 
+    margin: 0 20px; 
+}
+
+.video-container video {
+    width: 38%; 
+    height: auto; 
+    border-radius: 8px; 
+}
+.video-container .description:hover {
+    background-color: #e8e6e639; 
+    transform: scale(1.05); 
+    cursor: pointer;
+    
+}
+.video-container:hover{
+    cursor: pointer;
+
+}
+

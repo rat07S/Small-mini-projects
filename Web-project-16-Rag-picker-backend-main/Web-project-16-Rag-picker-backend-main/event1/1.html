@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Rag Pickers</title>
+    <link rel="stylesheet" type="text/css" href="1.css" charset="utf-8">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Local Rag Pickers</h1>
+    </header>
+    <main>
+        <section id="search">
+            <h2>Find Nearby Rag Pickers</h2>
+            <form id="searchForm" action="1.php" method="post">
+                <label for="location">Enter Your Location:</label>
+                <input type="text" id="location" name="location" required>
+                <label for="material">Type of Material:</label>
+                <input type="text" id="material" name="material" required>
+                <button type="submit">Search</button>
+            </form>
+            <div id="results"> 
+               
+            </div>
+        </section>
+    </main>
+    <script src="1.js"></script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+body {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif, sans-serif;
+    margin: 0;
+    padding: 0;
+    /* Add lagoon luminescence effect to the background */
+    background: radial-gradient(circle, #00FFFF 10%, #00CED1 40%, #AFEEEE 60%, #D4F1F4 100%);
+    background-size: 1000% 1000%;
+    animation: lagoon-luminescence 10s infinite alternate;
+}
+
+@keyframes lagoon-luminescence {
+    0% {
+        background-position: 0% 0%;
+    }
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+
+
+  
+  header {
+    color: #060606;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .aurora {
+    font-size: 24px;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 20px;
+  }
+  
+  nav ul li a {
+    color: #020202;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    margin: 20px;
+  }
+  
+  nav ul li a:hover {
+    color: #250dab; 
+  }
+  
+  .clothing-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjust minmax value as needed */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .clothing-item:hover {
+    /* hover styles */
+    background-color: #020202;
+    color: #fffdfd;
+    cursor: pointer;
+  }
+  
+  
+  .clothing-item {
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ccc; /* Add border for better visual separation */
+    border-radius: 8px; /* Add border radius for a softer look */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  }
+  
+  .clothing-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  /* Keyframe animation to slide images */
+  @keyframes slide {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  
+  /* Apply animation to all images */
+  .clothing-item img:nth-child(2) {
+    position: absolute;
+    top: 0;
+    left: 100%; /* Initially position the second image outside the viewport */
+    animation: slide 5s linear infinite; /* Adjust duration as needed */
+  }
+  

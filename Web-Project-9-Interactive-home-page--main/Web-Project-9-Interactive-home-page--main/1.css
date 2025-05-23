@@ -1,0 +1,72 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: cursive;
+    color: #030303;
+}
+
+.aurora {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.aurora-layer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(120deg, rgba(30, 144, 255, 0.8), rgba(138, 43, 226, 0.8), rgba(255, 140, 0, 0.8)); /* Updated colors */
+    mix-blend-mode: screen;
+    filter: blur(100px); /* Increased blur for more distinct effect */
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease-out;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 30px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #070707;
+    font-size: 18px;
+}
+
+.content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.colour-1, .colour-2, .colour-3 {
+    display: none; /* These can be used if you want additional elements */
+}

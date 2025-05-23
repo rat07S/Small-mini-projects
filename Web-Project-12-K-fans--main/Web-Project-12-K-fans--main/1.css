@@ -1,0 +1,256 @@
+body {
+    margin: 0;
+    font-family: cursive;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.group-info {
+    position: fixed;
+    bottom: 75px; /* Adjust the value to move the footer higher */
+    left: 60px;
+    color: white; /* Set text color */
+}
+
+.group-name {
+    font-size: 24px;
+    margin-bottom: 5px; 
+}
+
+.quote {
+    font-style: italic;
+    font-size: 18px;
+}
+
+
+
+.aurora-text-bts {
+    font-size: 24px;
+    color: #000000; /* Color for 'BTS' */
+}
+
+.quote.aurora-text-bts .dream-work {
+    color: #fcfbfc; /* Color for 'dream work' */
+}
+
+/* CSS for text styling in 2.html */
+.aurora-text-blackpink {
+    font-size: 24px;
+    color: #030303; /* Color for 'Blackpink' */
+}
+
+.quote.aurora-text-blackpink .success {
+    color: #fffdff; /* Color for 'success' */
+}
+
+.quote.aurora-text-blackpink .smile {
+    color: #fffeff; /* Color for 'smile' */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+body.page1 {
+    background: linear-gradient(-45deg, #3b0bb4, #0299fe, #5101fee2, #791BCB);
+    background-size: 400% 400%;
+    animation: gradient1 15s ease infinite;
+}
+
+@keyframes gradient1 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body.page2 {
+    background: linear-gradient(-45deg, #791BCB, #DB5CA8, #DB5CA8, #791BCB);
+    background-size: 400% 400%;
+    animation: gradient2 15s ease infinite;
+}
+
+@keyframes gradient2 {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.page1 {
+    background-color: rgba(125, 120, 223, 0.915);
+}
+
+.page2 {
+    background-color: rgba(219, 92, 168, 0.871);
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(6, 6, 6);
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 1%;
+    border: none;
+}
+.store-name.page1 {
+    background-color: transparent; 
+}
+.store-name.page2 {
+    background-color: transparent;
+}
+.store-name {
+    font-size: 24px;
+}
+
+
+.store-name.page1 .web {
+    color: white; 
+    
+}
+
+.store-name.page1 .store {
+    color: rgb(19, 7, 246); /* Set store to dark blue */
+}
+
+/* Define styles for page 2 */
+.store-name.page2 .web {
+    color: black; /* Set web to black */
+}
+
+.store-name.page2 .store {
+    color: rgb(254, 3, 128); /* Set store to pink */
+    
+}
+
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.menu a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    margin: 5px 0;
+    white-space: nowrap;
+}
+.menu a:hover{
+    color:white;
+}
+
+.circle {
+    width: 400px;
+    height: 400px;
+    border-radius: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.circle img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    animation: slideIn 1.5s ease-in-out forwards;
+}
+
+.next-button {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    color: white;
+    padding: 15px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s, transform 0.3s;
+}
+
+.page1 .next-button:hover {
+    background: rgb(254, 3, 129); 
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+.page2 .next-button:hover {
+    background: rgba(13, 1, 250, 0.979); 
+    transform: translateY(-50%) scale(1.1);
+}
+
+
+.next-button i {
+    font-size: 32px;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
+.social-icons {
+    font-size: 25px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    
+}
+
+.social-icons a {
+    color: #000; /* Set icon color */
+    text-decoration: none;
+    margin-left: 10px; /* Adjust spacing between icons */
+}
+
+.social-icons a:hover {
+    color: #282628; /* Change icon color on hover */
+}
